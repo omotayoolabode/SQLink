@@ -1,0 +1,66 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using UmbNav.Core.Extensions;
+@{
+    //Gets the home page - used modelsbuilder
+    var homePage = Umbraco.ContentAtRoot().FirstOrDefault() as Home;
+    var logo = homePage.Logo;
+    var navigation = homePage.Navigation;
+}
+<!-- Header -->
+<header class="header" id="header">
+    <div class="mask"></div>
+    <div class="in">
+        <div class="innerpage">
+            <div class="row">
+
+                <!-- Logo -->
+                <a href="#" title="רפאל - בתי חולים" class="logo" style="background-image: '@logo.Url()'"></a>
+
+                <!-- Nav -->
+                <nav class="nav">
+                    <ul class="menu clear">
+                        @{
+                            foreach (var item in navigation)
+                            {
+                                if (item.Children.Count() > 0)
+                                {
+                                    <li class="has-subnav li-parent">
+                                        <a href="@item.Url()">@item.Name<span class="border"></span></a>
+                                    </li>
+                                    <div class="subnav">
+                                        <div class="subnav_in">
+                                            <div class="subnav_er">
+                                                <ul>
+                                                    @foreach (var child in item.Children)
+                                                    {
+                                                   
+                                                        <li><a href="@child.Url()"> @child.Name</a></li>
+                                                    }
+                                                   
+                                                   
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                }
+                                else
+                                {
+
+                                        <li class="li-parent">
+                                                <a href="@item.Url()">@item.Name<span class="border"></span></a>
+                                                </li>
+                                }
+                            }
+                        }
+               
+                    </ul>
+                </nav>
+
+                <!-- Mobile -->
+                <a href="javascript:;" class="toggleMenu" id="toggleMenu" aria-label="פתח תפריט"><span class="stroke"><span class="middle"></span></span></a>
+
+            </div>
+        </div>
+    </div>
+</header>
