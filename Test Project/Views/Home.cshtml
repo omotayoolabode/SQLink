@@ -1,6 +1,7 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Home>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using UmbNav.Core.Extensions;
 @{
     Layout = "Masterpage.cshtml";
     var carousel = Model.Carousel;
@@ -121,18 +122,16 @@
                             <div class="content">
                                 <div class="table">
                                     <div class="table-cell">
-                                        <h2 class="title_section title-2 sm-global sm-splittext" data-smprop='{"type":"split","threshold":0.02}'>שיא הטכנולוגיה ברפואה</h2>
+                                        <h2 class="title_section title-2 sm-global sm-splittext" data-smprop='{"type":"split","threshold":0.02}'>@Model.Text</h2>
                                         <p class="paragraph font_l sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'>קבלת שירות באמצעים הטכנולוגים המתקדמים בעולם, אתם מוזמנים לבחור את המכון המתאים לכם:</p>
                                         <ul class="two_col_links sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'>
-                                            <li><a href="#"><span class="text">המרכז הבריאטרי</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">מכון דופלר</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">מכון שמיעה</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">המרכז הבריאטרי</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">מכור דופלר</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">המרכז הבריאטרי</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">מכון דופלר</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">מכון שמיעה</span><span class="icon icon-chev_left"></span></a></li>
-                                            <li><a href="#"><span class="text">המרכז הבריאטרי</span><span class="icon icon-chev_left"></span></a></li>
+                                            @{
+                                                foreach (var item in Model.Links)
+                                                {
+                                                    <li><a href="@item.Url()"><span class="text">@item.Name</span><span class="icon icon-chev_left"></span></a></li>
+                                                }
+                                            }
+                                          
                                         </ul>
                                         <div class="btn_cont sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'><a href="#" class="btn"><span>לכל המרכזים והמכונים</span></a></div>
                                     </div>
@@ -143,35 +142,7 @@
                 </section>
 
                 <!-- Side section -->
-                <section class="side_section bg_grayblue">
-                    <div class="innerpage">
-                        <div class="row">
-                            <div class="image sm-global sm-imagereveal parallax" data-smprop='{"type":"class","threshold":0.15}' data-translatey="0.35" data-ease="0.09"><div class="bg parallax-move"><div class="cover" style="background-image:url('media/images/pictures/3.jpg');"></div></div></div>
-                            <div class="content">
-                                <div class="table">
-                                    <div class="table-cell">
-                                        <h2 class="title_section title-2 sm-global sm-splittext" data-smprop='{"type":"split","threshold":0.02}'>שירותי רפואה מובילים</h2>
-                                        <p class="paragraph font_l sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'>המחלקה לשירותים רפואיים במחוז השיקום היא הגוף המטפל בכל הפניות הנוגעות לטיפול הרפואי.  צוות המחלקה לשירותים רפואיים במחוז השיקום כולל רופאים מחוזיים, מנהל/ת מרפאה ועובדי שירותים רפואיים.<br /><br />ישנה ​קבלת קהל פתוחה במחוז, במהלכה ניתן להיפגש עם עובדי השירותים הרפואיים, ללא תיאום מראש. על מנת להיפגש עם הרופא המחוזי יש לקבוע פגישה מראש, באמצעות פנייה לעובד השירותים הרפואיים במחוז.</p>
-                                        <div class="links_cont sm-global sm-linksreveal" data-smprop='{"type":"class","threshold":0.1}'>
-                                            <ul class="one two_col_links">
-                                                <li class="li-title"><h4 class="title font_l">שירותים מובילים</h4></li>
-                                                <li><a href="#"><span class="text">מערך ההרדמה</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">מערך כירורגי</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">מרפאת כלי דם</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">ועדה להפסקת הריון</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">ביופסיה של הערמונית</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">דיקור מי שפיר וצי’פ גנטי</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">היחידה לריסוק אבנים בכליות</span><span class="icon icon-chev_left"></span></a></li>
-                                                <li><a href="#"><span class="text">מחלקות אשפוז</span><span class="icon icon-chev_left"></span></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="btn_cont sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'><a href="#" class="btn"><span>לכל שירותי הרפואה שלנו</span></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+              
 
                 <!-- Experts section -->
                 <section class="experts_section" id="experts_section">
@@ -179,61 +150,27 @@
                         <div class="row">
                             <h2 class="title_section title-2 sm-global sm-splittext" data-smprop='{"type":"split","threshold":0.02}'>מיטב המומחים כאן בשבילכם</h2>
                             <div class="carousel sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}' data-flickity='{ "cellAlign": "right", "contain": true, "rightToLeft" : true, "pageDots" : false, "prevNextButtons" : false, "watchCSS" : true }'>
-                                <div class="item carousel-cell">
-                                    <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
-                                        <div class="in">
-                                            <div class="bg"><div class="cover" style="background-image: url('media/images/pictures/4.jpg');"></div></div>
-                                            <div class="bottom font_l">
-                                                <h3 class="title font_l high"><div><span>ד״ר רוגובסקי שני</span></div></h3>
-                                                <div class="desc high"><div><span>התמחות</span></div></div>
-                                            </div>
+                                @{
+                                    foreach (var item in Model.Experts)
+                                    {
+                                        var itemAsModel = item.Content as Experts;
+                                        var image = itemAsModel.Image;
+                                        var name = itemAsModel.ExpertName;
+                                        <div class="item carousel-cell">
+                                            <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
+                                                <div class="in">
+                                                    <div class="bg"><div class="cover" style="background-image: url('@image');"></div></div>
+                                                    <div class="bottom font_l">
+                                                        <h3 class="title font_l high"><div><span>@itemAsModel.ExpertName</span></div></h3>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="item carousel-cell">
-                                    <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
-                                        <div class="in">
-                                            <div class="bg"><div class="cover" style="background-image: url('media/images/pictures/5.jpg');"></div></div>
-                                            <div class="bottom font_l">
-                                                <h3 class="title font_l high"><div><span>ד״ר רוגובסקי שני</span></div></h3>
-                                                <div class="desc high"><div><span>התמחות</span></div></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item carousel-cell">
-                                    <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
-                                        <div class="in">
-                                            <div class="bg"><div class="cover" style="background-image: url('media/images/pictures/6.jpg');"></div></div>
-                                            <div class="bottom font_l">
-                                                <h3 class="title font_l high"><div><span>ד״ר רוגובסקי שני</span></div></h3>
-                                                <div class="desc high"><div><span>התמחות</span></div></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item carousel-cell">
-                                    <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
-                                        <div class="in">
-                                            <div class="bg"><div class="cover" style="background-image: url('media/images/pictures/7.jpg');"></div></div>
-                                            <div class="bottom font_l">
-                                                <h3 class="title font_l high"><div><span>ד״ר רוגובסקי שני</span></div></h3>
-                                                <div class="desc high"><div><span>התמחות</span></div></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item carousel-cell">
-                                    <a href="#" class="inner hover_highlight" aria-label="עבור לרופא">
-                                        <div class="in">
-                                            <div class="bg"><div class="cover" style="background-image: url('media/images/pictures/8.jpg');"></div></div>
-                                            <div class="bottom font_l">
-                                                <h3 class="title font_l high"><div><span>ד״ר רוגובסקי שני</span></div></h3>
-                                                <div class="desc high"><div><span>התמחות</span></div></div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+
+                                    }
+                               }
+                               
                             </div>
                             <div class="btn_cont sm-global sm-fadein" data-smprop='{"type":"class","threshold":0.1}'><a href="#" class="btn"><span>לכל המומחים שלנו</span></a></div>
                         </div>
